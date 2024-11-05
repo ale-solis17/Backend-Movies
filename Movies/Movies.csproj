@@ -55,10 +55,12 @@
       <DependentUpon>Conexion.dbml</DependentUpon>
     </Compile>
     <Compile Include="Entidades\Request\ReqActualizarUsuario.cs" />
+    <Compile Include="Entidades\Request\ReqCrearPelicula.cs" />
     <Compile Include="Entidades\Request\ReqCrearUsuario.cs" />
     <Compile Include="Entidades\Request\ReqMostrarPeliculas.cs" />
     <Compile Include="Entidades\Response\ResActualizarUsuario.cs" />
     <Compile Include="Entidades\Response\ResBase.cs" />
+    <Compile Include="Entidades\Response\ResCrearPelicula.cs" />
     <Compile Include="Entidades\Response\ResCrearUsuario.cs" />
     <Compile Include="Entidades\Response\ResMostrarPeliculas.cs" />
     <Compile Include="Logica\LogPeliculas.cs" />

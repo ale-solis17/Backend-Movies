@@ -88,6 +88,16 @@ namespace Movies.AccesoDatos
 			eRRORDESCRIPCION = ((string)(result.GetParameterValue(7)));
 			return ((int)(result.ReturnValue));
 		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="Movies_DB.SP_CREAR_PELICULA")]
+		public int SP_CREAR_PELICULA([global::System.Data.Linq.Mapping.ParameterAttribute(Name="NAME", DbType="NVarChar(50)")] string nAME, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="RATING", DbType="Decimal(3,2)")] System.Nullable<decimal> rATING, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="DIRECTOR", DbType="NVarChar(50)")] string dIRECTOR, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="MOVIETIME", DbType="Int")] System.Nullable<int> mOVIETIME, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="CREATEDAT", DbType="Date")] System.Nullable<System.DateTime> cREATEDAT, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="SYNOPSIS", DbType="NVarChar(MAX)")] string sYNOPSIS, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="MOVIETYPES", DbType="NVarChar(MAX)")] string mOVIETYPES, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="IDRETURN", DbType="BigInt")] ref System.Nullable<long> iDRETURN, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ERRORID", DbType="Int")] ref System.Nullable<int> eRRORID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ERRORDESCRIPCION", DbType="NVarChar(MAX)")] ref string eRRORDESCRIPCION)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), nAME, rATING, dIRECTOR, mOVIETIME, cREATEDAT, sYNOPSIS, mOVIETYPES, iDRETURN, eRRORID, eRRORDESCRIPCION);
+			iDRETURN = ((System.Nullable<long>)(result.GetParameterValue(7)));
+			eRRORID = ((System.Nullable<int>)(result.GetParameterValue(8)));
+			eRRORDESCRIPCION = ((string)(result.GetParameterValue(9)));
+			return ((int)(result.ReturnValue));
+		}
 	}
 	
 	public partial class SP_MOSTRAR_PELICULASResult
