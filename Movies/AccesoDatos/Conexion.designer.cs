@@ -98,6 +98,43 @@ namespace Movies.AccesoDatos
 			eRRORDESCRIPCION = ((string)(result.GetParameterValue(9)));
 			return ((int)(result.ReturnValue));
 		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="Movies_DB.SP_TRAER_USUARIO")]
+		public ISingleResult<SP_TRAER_USUARIOResult> SP_TRAER_USUARIO([global::System.Data.Linq.Mapping.ParameterAttribute(Name="IDUSUARIO", DbType="BigInt")] System.Nullable<long> iDUSUARIO)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), iDUSUARIO);
+			return ((ISingleResult<SP_TRAER_USUARIOResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="Movies_DB.SP_MOSTRAR_COMENTARIOS")]
+		public ISingleResult<SP_MOSTRAR_COMENTARIOSResult> SP_MOSTRAR_COMENTARIOS([global::System.Data.Linq.Mapping.ParameterAttribute(Name="IDMOVIE", DbType="BigInt")] System.Nullable<long> iDMOVIE, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="IDRETURN", DbType="Int")] ref System.Nullable<int> iDRETURN, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ERRORID", DbType="Int")] ref System.Nullable<int> eRRORID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ERRORDESCRIPCION", DbType="NVarChar(MAX)")] ref string eRRORDESCRIPCION)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), iDMOVIE, iDRETURN, eRRORID, eRRORDESCRIPCION);
+			iDRETURN = ((System.Nullable<int>)(result.GetParameterValue(1)));
+			eRRORID = ((System.Nullable<int>)(result.GetParameterValue(2)));
+			eRRORDESCRIPCION = ((string)(result.GetParameterValue(3)));
+			return ((ISingleResult<SP_MOSTRAR_COMENTARIOSResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="Movies_DB.SP_CREAR_COMENTARIO")]
+		public int SP_CREAR_COMENTARIO([global::System.Data.Linq.Mapping.ParameterAttribute(Name="IDUSUARIO", DbType="BigInt")] System.Nullable<long> iDUSUARIO, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="IDMOVIE", DbType="BigInt")] System.Nullable<long> iDMOVIE, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="COMENTARIO", DbType="NVarChar(MAX)")] string cOMENTARIO, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="IDRETURN", DbType="BigInt")] ref System.Nullable<long> iDRETURN, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ERRORID", DbType="Int")] ref System.Nullable<int> eRRORID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ERRORDESCRIPCION", DbType="NVarChar(MAX)")] ref string eRRORDESCRIPCION)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), iDUSUARIO, iDMOVIE, cOMENTARIO, iDRETURN, eRRORID, eRRORDESCRIPCION);
+			iDRETURN = ((System.Nullable<long>)(result.GetParameterValue(3)));
+			eRRORID = ((System.Nullable<int>)(result.GetParameterValue(4)));
+			eRRORDESCRIPCION = ((string)(result.GetParameterValue(5)));
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="Movies_DB.SP_BORRAR_COMENTARIO")]
+		public int SP_BORRAR_COMENTARIO([global::System.Data.Linq.Mapping.ParameterAttribute(Name="IDUSUARIO", DbType="BigInt")] System.Nullable<long> iDUSUARIO, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="IDCOMENTARIO", DbType="BigInt")] System.Nullable<long> iDCOMENTARIO, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="IDRETURN", DbType="BigInt")] ref System.Nullable<long> iDRETURN, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ERRORID", DbType="Int")] ref System.Nullable<int> eRRORID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ERRORDESCRIPCION", DbType="NVarChar(MAX)")] ref string eRRORDESCRIPCION)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), iDUSUARIO, iDCOMENTARIO, iDRETURN, eRRORID, eRRORDESCRIPCION);
+			iDRETURN = ((System.Nullable<long>)(result.GetParameterValue(2)));
+			eRRORID = ((System.Nullable<int>)(result.GetParameterValue(3)));
+			eRRORDESCRIPCION = ((string)(result.GetParameterValue(4)));
+			return ((int)(result.ReturnValue));
+		}
 	}
 	
 	public partial class SP_MOSTRAR_PELICULASResult
@@ -265,6 +302,220 @@ namespace Movies.AccesoDatos
 				if ((this._Genero != value))
 				{
 					this._Genero = value;
+				}
+			}
+		}
+	}
+	
+	public partial class SP_TRAER_USUARIOResult
+	{
+		
+		private long _IdUser;
+		
+		private string _Name;
+		
+		private string _LastName;
+		
+		private string _Mail;
+		
+		private string _Nickname;
+		
+		public SP_TRAER_USUARIOResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IdUser", DbType="BigInt NOT NULL")]
+		public long IdUser
+		{
+			get
+			{
+				return this._IdUser;
+			}
+			set
+			{
+				if ((this._IdUser != value))
+				{
+					this._IdUser = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="NVarChar(30) NOT NULL", CanBeNull=false)]
+		public string Name
+		{
+			get
+			{
+				return this._Name;
+			}
+			set
+			{
+				if ((this._Name != value))
+				{
+					this._Name = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LastName", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string LastName
+		{
+			get
+			{
+				return this._LastName;
+			}
+			set
+			{
+				if ((this._LastName != value))
+				{
+					this._LastName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Mail", DbType="NVarChar(40) NOT NULL", CanBeNull=false)]
+		public string Mail
+		{
+			get
+			{
+				return this._Mail;
+			}
+			set
+			{
+				if ((this._Mail != value))
+				{
+					this._Mail = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nickname", DbType="NVarChar(30) NOT NULL", CanBeNull=false)]
+		public string Nickname
+		{
+			get
+			{
+				return this._Nickname;
+			}
+			set
+			{
+				if ((this._Nickname != value))
+				{
+					this._Nickname = value;
+				}
+			}
+		}
+	}
+	
+	public partial class SP_MOSTRAR_COMENTARIOSResult
+	{
+		
+		private long _IdComments;
+		
+		private long _FkIdUser;
+		
+		private long _FkIdMovie;
+		
+		private System.DateTime _InsertDate;
+		
+		private string _Comment;
+		
+		private byte _Deleted;
+		
+		public SP_MOSTRAR_COMENTARIOSResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IdComments", DbType="BigInt NOT NULL")]
+		public long IdComments
+		{
+			get
+			{
+				return this._IdComments;
+			}
+			set
+			{
+				if ((this._IdComments != value))
+				{
+					this._IdComments = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FkIdUser", DbType="BigInt NOT NULL")]
+		public long FkIdUser
+		{
+			get
+			{
+				return this._FkIdUser;
+			}
+			set
+			{
+				if ((this._FkIdUser != value))
+				{
+					this._FkIdUser = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FkIdMovie", DbType="BigInt NOT NULL")]
+		public long FkIdMovie
+		{
+			get
+			{
+				return this._FkIdMovie;
+			}
+			set
+			{
+				if ((this._FkIdMovie != value))
+				{
+					this._FkIdMovie = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InsertDate", DbType="DateTime NOT NULL")]
+		public System.DateTime InsertDate
+		{
+			get
+			{
+				return this._InsertDate;
+			}
+			set
+			{
+				if ((this._InsertDate != value))
+				{
+					this._InsertDate = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Comment", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
+		public string Comment
+		{
+			get
+			{
+				return this._Comment;
+			}
+			set
+			{
+				if ((this._Comment != value))
+				{
+					this._Comment = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Deleted", DbType="TinyInt NOT NULL")]
+		public byte Deleted
+		{
+			get
+			{
+				return this._Deleted;
+			}
+			set
+			{
+				if ((this._Deleted != value))
+				{
+					this._Deleted = value;
 				}
 			}
 		}

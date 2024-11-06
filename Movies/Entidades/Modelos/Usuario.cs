@@ -8,7 +8,7 @@ namespace Movies
 {
     public class Usuario
     {
-        public int id { get; set; }
+        public long id { get; set; }
         public string name { get; set; }
         public string lastName { get; set; }
         public string mail { get; set; }

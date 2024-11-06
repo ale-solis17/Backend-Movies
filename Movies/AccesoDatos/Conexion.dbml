@@ -48,4 +48,45 @@
     <Parameter Name="ERRORDESCRIPCION" Parameter="eRRORDESCRIPCION" Type="System.String" DbType="NVarChar(MAX)" Direction="InOut" />
     <Return Type="System.Int32" />
   </Function>
+  <Function Name="Movies_DB.SP_TRAER_USUARIO" Method="SP_TRAER_USUARIO">
+    <Parameter Name="IDUSUARIO" Parameter="iDUSUARIO" Type="System.Int64" DbType="BigInt" />
+    <ElementType Name="SP_TRAER_USUARIOResult">
+      <Column Name="IdUser" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="LastName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Mail" Type="System.String" DbType="NVarChar(40) NOT NULL" CanBeNull="false" />
+      <Column Name="Nickname" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="Movies_DB.SP_MOSTRAR_COMENTARIOS" Method="SP_MOSTRAR_COMENTARIOS">
+    <Parameter Name="IDMOVIE" Parameter="iDMOVIE" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="IDRETURN" Parameter="iDRETURN" Type="System.Int32" DbType="Int" Direction="InOut" />
+    <Parameter Name="ERRORID" Parameter="eRRORID" Type="System.Int32" DbType="Int" Direction="InOut" />
+    <Parameter Name="ERRORDESCRIPCION" Parameter="eRRORDESCRIPCION" Type="System.String" DbType="NVarChar(MAX)" Direction="InOut" />
+    <ElementType Name="SP_MOSTRAR_COMENTARIOSResult">
+      <Column Name="IdComments" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="FkIdUser" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="FkIdMovie" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="InsertDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Comment" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="Deleted" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="Movies_DB.SP_CREAR_COMENTARIO" Method="SP_CREAR_COMENTARIO">
+    <Parameter Name="IDUSUARIO" Parameter="iDUSUARIO" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="IDMOVIE" Parameter="iDMOVIE" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="COMENTARIO" Parameter="cOMENTARIO" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="IDRETURN" Parameter="iDRETURN" Type="System.Int64" DbType="BigInt" Direction="InOut" />
+    <Parameter Name="ERRORID" Parameter="eRRORID" Type="System.Int32" DbType="Int" Direction="InOut" />
+    <Parameter Name="ERRORDESCRIPCION" Parameter="eRRORDESCRIPCION" Type="System.String" DbType="NVarChar(MAX)" Direction="InOut" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="Movies_DB.SP_BORRAR_COMENTARIO" Method="SP_BORRAR_COMENTARIO">
+    <Parameter Name="IDUSUARIO" Parameter="iDUSUARIO" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="IDCOMENTARIO" Parameter="iDCOMENTARIO" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="IDRETURN" Parameter="iDRETURN" Type="System.Int64" DbType="BigInt" Direction="InOut" />
+    <Parameter Name="ERRORID" Parameter="eRRORID" Type="System.Int32" DbType="Int" Direction="InOut" />
+    <Parameter Name="ERRORDESCRIPCION" Parameter="eRRORDESCRIPCION" Type="System.String" DbType="NVarChar(MAX)" Direction="InOut" />
+    <Return Type="System.Int32" />
+  </Function>
 </Database>

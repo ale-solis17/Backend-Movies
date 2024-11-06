@@ -59,63 +59,71 @@ namespace Movies.Logica
             ResCrearPelicula res = new ResCrearPelicula();
             res.errores = new List<string>();
 
-            if (req != null)
+            try
             {
-                if (String.IsNullOrEmpty(req.Peliculas.name))
+                if (req != null)
                 {
-                    res.respuesta = false;
-                    res.errores.Add("Falta el nombre");
-                }
-                else if (req.Peliculas.rating <= 0)
-                {
-                    res.respuesta = false;
-                    res.errores.Add("Falta el rating");
-                }
-                else if (String.IsNullOrEmpty(req.Peliculas.director))
-                {
-                    res.respuesta = false;
-                    res.errores.Add("Falta el director");
-                }
-                else if (req.Peliculas.duracion <= 0)
-                {
-                    res.respuesta = false;
-                    res.errores.Add("Falta la duracion");
-                }
-                else if (String.IsNullOrEmpty(req.Peliculas.synopsis))
-                {
-                    res.respuesta = false;
-                    res.errores.Add("Falta la synopsis");
-                }
-                else if (String.IsNullOrEmpty(req.Peliculas.generos))
-                {
-                    res.respuesta = false;
-                    res.errores.Add("Faltan los generos");
-                }
-                else
-                {
-                    long? idReturn = 0;
-                    int? errorId = 0;
-                    string errorBD = "";
-
-                    ConexionDataContext conexion = new ConexionDataContext();
-                    conexion.SP_CREAR_PELICULA(req.Peliculas.name, req.Peliculas.rating, req.Peliculas.director, req.Peliculas.duracion, req.Peliculas.creacion, req.Peliculas.synopsis, req.Peliculas.generos, ref idReturn, ref errorId, ref errorBD);
-
-
-                    if (idReturn <= 0)
+                    if (String.IsNullOrEmpty(req.Peliculas.name))
                     {
                         res.respuesta = false;
-                        res.errores.Add(errorBD);
+                        res.errores.Add("Falta el nombre");
+                    }
+                    else if (req.Peliculas.rating <= 0)
+                    {
+                        res.respuesta = false;
+                        res.errores.Add("Falta el rating");
+                    }
+                    else if (String.IsNullOrEmpty(req.Peliculas.director))
+                    {
+                        res.respuesta = false;
+                        res.errores.Add("Falta el director");
+                    }
+                    else if (req.Peliculas.duracion <= 0)
+                    {
+                        res.respuesta = false;
+                        res.errores.Add("Falta la duracion");
+                    }
+                    else if (String.IsNullOrEmpty(req.Peliculas.synopsis))
+                    {
+                        res.respuesta = false;
+                        res.errores.Add("Falta la synopsis");
+                    }
+                    else if (String.IsNullOrEmpty(req.Peliculas.generos))
+                    {
+                        res.respuesta = false;
+                        res.errores.Add("Faltan los generos");
                     }
                     else
                     {
-                        res.respuesta = true;
+                        long? idReturn = 0;
+                        int? errorId = 0;
+                        string errorBD = "";
+
+                        ConexionDataContext conexion = new ConexionDataContext();
+                        conexion.SP_CREAR_PELICULA(req.Peliculas.name, req.Peliculas.rating, req.Peliculas.director, req.Peliculas.duracion, req.Peliculas.creacion, req.Peliculas.synopsis, req.Peliculas.generos, ref idReturn, ref errorId, ref errorBD);
+
+
+                        if (idReturn <= 0)
+                        {
+                            res.respuesta = false;
+                            res.errores.Add(errorBD);
+                        }
+                        else
+                        {
+                            res.respuesta = true;
+                        }
                     }
                 }
+                else
+                {
+                    res.respuesta = false;
+                    res.errores.Add("Req null");
+                }
             }
-            else
+            catch (Exception ex)
             {
                 res.respuesta = false;
-                res.errores.Add("Req null");
+                res.errores.Add(ex.Message);
             }
 
             return res;

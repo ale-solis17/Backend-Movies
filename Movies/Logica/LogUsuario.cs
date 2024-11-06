@@ -139,5 +139,48 @@ namespace Movies.Logica
             }
             return res;
         }
+
+        public ResMostrarUsuario mostrar (ReqMostrarUsuario req)
+        {
+            ResMostrarUsuario res = new ResMostrarUsuario();
+            res.errores = new List<string>();
+
+            try
+            {
+                if (req != null)
+                {
+                    if (req.Usuario.id < 0)
+                    {
+                        res.respuesta = false;
+                        res.errores.Add("Falta Id");
+                    }
+                    else
+                    {
+                        ConexionDataContext conexion = new ConexionDataContext();
+                        conexion.SP_TRAER_USUARIO(req.Usuario.id);
+                        SP_TRAER_USUARIOResult result = new SP_TRAER_USUARIOResult();
+
+                        res.respuesta = true;
+                        res.Usuario.id = result.IdUser;
+                        res.Usuario.name = result.Name;
+                        res.Usuario.lastName = result.LastName;
+                        res.Usuario.mail = result.Mail;
+                        res.Usuario.nickname = result.Nickname;
+                        
+                    }
+                }
+                else
+                {
+                    res.respuesta = false;
+                    res.errores.Add("Req null");
+                }
+            }
+            catch (Exception ex)
+            {
+                res.respuesta = false;
+                res.errores.Add (ex.Message);
+            }
+            return res;
+        }
     }
 }
