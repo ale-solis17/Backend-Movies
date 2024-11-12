@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Movies.Entidades
 {
-    internal class ResCrearComentario : ResBase
+    public class ResCrearComentario : ResBase
     {
     }
 }

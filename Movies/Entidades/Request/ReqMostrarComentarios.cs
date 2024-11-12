@@ -7,7 +7,7 @@ using Movies.Entidades.Modelos;
 
 namespace Movies.Entidades
 {
-    internal class ReqMostrarComentarios
+    public class ReqMostrarComentarios
     {
         public Comentario Comentario { get; set; }
     }

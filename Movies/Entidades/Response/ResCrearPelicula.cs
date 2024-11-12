@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Movies.Entidades
 {
-    internal class ResCrearPelicula : ResBase
+    public class ResCrearPelicula : ResBase
     {
     }
 }

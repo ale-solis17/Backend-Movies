@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Movies.Entidades
 {
-    internal class ResBase
+    public class ResBase
     {
         public bool respuesta { get; set; }
         public List<string> errores { get; set; }

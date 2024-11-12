@@ -7,7 +7,7 @@ using Movies.Entidades.Modelos;
 
 namespace Movies.Entidades
 {
-    internal class ReqMostrarPeliculas
+    public class ReqMostrarPeliculas
     {
         public Peliculas Peliculas { get; set; }
     }

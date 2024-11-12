@@ -9,7 +9,7 @@ using Movies.Entidades;
 
 namespace Movies.Logica
 {
-    internal class LogUsuario
+    public class LogUsuario
     {
         public ResCrearUsuario crear(ReqCrearUsuario req)
         {

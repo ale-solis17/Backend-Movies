@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Movies.Entidades.Modelos
 {
-    internal class Peliculas
+    public class Peliculas
     {
         public long id { get; set; }
         public string name { get; set; }

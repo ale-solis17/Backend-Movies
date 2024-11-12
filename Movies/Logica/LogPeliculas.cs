@@ -9,7 +9,7 @@ using Movies.Entidades.Modelos;
 
 namespace Movies.Logica
 {
-    internal class LogPeliculas
+    public class LogPeliculas
     {
         public ResMostrarPeliculas mostrar(ReqMostrarPeliculas req)
         {

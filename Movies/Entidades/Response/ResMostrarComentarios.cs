@@ -7,7 +7,7 @@ using Movies.Entidades.Modelos;
 
 namespace Movies.Entidades
 {
-    internal class ResMostrarComentarios : ResBase
+    public class ResMostrarComentarios : ResBase
     {
         public List<Comentario> Comentarios {  get; set; }
     }

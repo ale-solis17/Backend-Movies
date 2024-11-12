@@ -5,6 +5,8 @@ VisualStudioVersion = 17.11.35327.3
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Movies", "Movies.csproj", "{8E1BAA72-67C5-453E-A0AA-85F30C94A674}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "APIRest", "..\APIRest\APIRest.csproj", "{A6FE0059-5009-42D5-B8D9-8F2AC4EC4559}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{8E1BAA72-67C5-453E-A0AA-85F30C94A674}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8E1BAA72-67C5-453E-A0AA-85F30C94A674}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8E1BAA72-67C5-453E-A0AA-85F30C94A674}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A6FE0059-5009-42D5-B8D9-8F2AC4EC4559}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A6FE0059-5009-42D5-B8D9-8F2AC4EC4559}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A6FE0059-5009-42D5-B8D9-8F2AC4EC4559}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A6FE0059-5009-42D5-B8D9-8F2AC4EC4559}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -9,9 +9,9 @@ using Movies.Entidades.Modelos;
 
 namespace Movies.Logica
 {
-    internal class LogComentario
+    public class LogComentario
     {
-        ResCrearComentario crear(ReqCrearComentario req)
+        public ResCrearComentario crear(ReqCrearComentario req)
         {
             ResCrearComentario res = new ResCrearComentario();
             res.errores = new List<string>();

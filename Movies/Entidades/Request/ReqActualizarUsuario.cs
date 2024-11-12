@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Movies.Entidades
 {
-    internal class ReqActualizarUsuario
+    public class ReqActualizarUsuario
     {
         public Usuario Usuario { get; set; }
     }

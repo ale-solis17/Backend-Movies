@@ -7,7 +7,7 @@ using Movies.Entidades.Modelos;
 
 namespace Movies.Entidades
 {
-    internal class ResMostrarPeliculas : ResBase
+    public class ResMostrarPeliculas : ResBase
     {
         public List<Peliculas> Peliculas { get; set; }
     }

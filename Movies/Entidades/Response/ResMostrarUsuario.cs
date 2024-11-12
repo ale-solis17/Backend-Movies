@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Movies.Entidades
 {
-    internal class ResMostrarUsuario : ResBase
+    public class ResMostrarUsuario : ResBase
     {
         public Usuario Usuario { get; set; }
     }
