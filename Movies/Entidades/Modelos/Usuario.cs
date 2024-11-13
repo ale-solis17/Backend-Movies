@@ -14,5 +14,7 @@ namespace Movies
         public string mail { get; set; }
         public string password { get; set; }
         public string nickname { get; set; }
+        public string userType { get; set; }
+        public string userStatus { get; set; } 
     }
 }

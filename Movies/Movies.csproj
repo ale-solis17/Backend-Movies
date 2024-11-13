@@ -47,14 +47,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Entidades\Modelos\Comentario.cs" />
-    <Compile Include="Entidades\Modelos\Peliculas.cs" />
-    <Compile Include="Entidades\Modelos\Usuario.cs" />
     <Compile Include="AccesoDatos\Conexion.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Conexion.dbml</DependentUpon>
     </Compile>
+    <Compile Include="Entidades\Modelos\Comentario.cs" />
+    <Compile Include="Entidades\Modelos\Peliculas.cs" />
+    <Compile Include="Entidades\Modelos\Usuario.cs" />
     <Compile Include="Entidades\Request\ReqActualizarUsuario.cs" />
     <Compile Include="Entidades\Request\ReqBorrarComentario.cs" />
     <Compile Include="Entidades\Request\ReqCrearComentario.cs" />
@@ -83,7 +83,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
     <None Include="AccesoDatos\Conexion.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
       <LastGenOutput>Conexion.designer.cs</LastGenOutput>
@@ -92,6 +91,7 @@
     <None Include="AccesoDatos\Conexion.dbml.layout">
       <DependentUpon>Conexion.dbml</DependentUpon>
     </None>
+    <None Include="app.config" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -101,5 +101,6 @@
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

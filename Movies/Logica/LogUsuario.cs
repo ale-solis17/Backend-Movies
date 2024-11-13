@@ -162,11 +162,12 @@ namespace Movies.Logica
 
                         res.respuesta = true;
                         res.Usuario.id = result.IdUser;
-                        res.Usuario.name = result.Name;
+                        res.Usuario.name = result.NameUser;
                         res.Usuario.lastName = result.LastName;
                         res.Usuario.mail = result.Mail;
                         res.Usuario.nickname = result.Nickname;
-                        
+                        res.Usuario.userType = result.UserType;
+                        res.Usuario.userStatus = result.UserStatus;
                     }
                 }
                 else

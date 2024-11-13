@@ -12,7 +12,7 @@ namespace Movies.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.11.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.12.0.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -26,11 +26,23 @@ namespace Movies.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=asolisulatina.database.windows.net;Initial Catalog=ulatina;Persist Se" +
-            "curity Info=True;User ID=asc;Encrypt=True")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Server=tcp:asolisulatina.database.windows.net,1433;Initial Catalog=ulatina;Persis" +
+            "t Security Info=False;User ID=asc;Password=YrRtjjBhr2MBF8ewoinC;MultipleActiveRe" +
+            "sultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;")]
         public string ulatinaConnectionString {
             get {
                 return ((string)(this["ulatinaConnectionString"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=asolisulatina.database.windows.net;Initial Catalog=ulatina;Persist Se" +
+            "curity Info=True;User ID=asc;Password=YrRtjjBhr2MBF8ewoinC;Encrypt=True")]
+        public string ulatinaConnectionString1 {
+            get {
+                return ((string)(this["ulatinaConnectionString1"]));
             }
         }
     }
