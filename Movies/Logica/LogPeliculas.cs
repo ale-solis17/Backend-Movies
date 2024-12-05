@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Movies.AccesoDatos;
 using Movies.Entidades;
 using Movies.Entidades.Modelos;
@@ -11,11 +9,13 @@ namespace Movies.Logica
 {
     public class LogPeliculas
     {
-        public ResMostrarPeliculas mostrar(ReqMostrarPeliculas req)
+        public ResMostrarPeliculas Mostrar(ReqMostrarPeliculas req)
         {
-            ResMostrarPeliculas res = new ResMostrarPeliculas();
-            res.errores = new List<string>();
-            res.Peliculas = new List<Peliculas>();
+            ResMostrarPeliculas res = new ResMostrarPeliculas
+            {
+                errores = new List<string>(),
+                Peliculas = new List<Peliculas>()
+            };
 
             try
             {
@@ -25,39 +25,43 @@ namespace Movies.Logica
 
                 foreach (SP_MOSTRAR_PELICULASResult unTipo in listaTipoComplejo)
                 {
-                    res.Peliculas.Add(this.factoriaPeliculas(unTipo));
+                    res.Peliculas.Add(this.FactoriaPeliculas(unTipo));
                 }
+
                 res.respuesta = true;
             }
             catch (Exception ex)
             {
                 res.respuesta = false;
-                res.errores.Add((string)ex.Message);
+                res.errores.Add(ex.Message);
             }
 
             return res;
         }
 
-        private Peliculas factoriaPeliculas(SP_MOSTRAR_PELICULASResult unTipoComplejo)
+        private Peliculas FactoriaPeliculas(SP_MOSTRAR_PELICULASResult unTipoComplejo)
         {
-            Peliculas peliculasRetornar = new Peliculas();
-            peliculasRetornar.id = unTipoComplejo.IdMovie;
-            peliculasRetornar.name = unTipoComplejo.Name;
-            peliculasRetornar.rating = unTipoComplejo.Rating;
-            peliculasRetornar.director = unTipoComplejo.Director;
-            peliculasRetornar.duracion = unTipoComplejo.MovieTime;
-            peliculasRetornar.creacion = unTipoComplejo.CreatedAt;
-            peliculasRetornar.fechaIngresado = unTipoComplejo.InsertDate;
-            peliculasRetornar.synopsis = unTipoComplejo.Synopsis;
-            peliculasRetornar.generos = unTipoComplejo.Genero;
+            Peliculas peliculasRetornar = new Peliculas
+            {
+                id = unTipoComplejo.IdMovie,
+                name = unTipoComplejo.Name,
+                rating = unTipoComplejo.Rating ?? 0,
+                director = unTipoComplejo.Director,
+                duracion = unTipoComplejo.MovieTime,
+                creacion = unTipoComplejo.InsertDate,
+                synopsis = unTipoComplejo.Synopsis,
+                generos = unTipoComplejo.Generos
+            };
 
             return peliculasRetornar;
         }
 
-        public ResCrearPelicula crear(ReqCrearPelicula req)
+        public ResCrearPelicula Crear(ReqCrearPelicula req)
         {
-            ResCrearPelicula res = new ResCrearPelicula();
-            res.errores = new List<string>();
+            ResCrearPelicula res = new ResCrearPelicula
+            {
+                errores = new List<string>()
+            };
 
             try
             {
@@ -67,11 +71,6 @@ namespace Movies.Logica
                     {
                         res.respuesta = false;
                         res.errores.Add("Falta el nombre");
-                    }
-                    else if (req.Peliculas.rating <= 0)
-                    {
-                        res.respuesta = false;
-                        res.errores.Add("Falta el rating");
                     }
                     else if (String.IsNullOrEmpty(req.Peliculas.director))
                     {
@@ -100,8 +99,9 @@ namespace Movies.Logica
                         string errorBD = "";
 
                         ConexionDataContext conexion = new ConexionDataContext();
-                        conexion.SP_CREAR_PELICULA(req.Peliculas.name, req.Peliculas.rating, req.Peliculas.director, req.Peliculas.duracion, req.Peliculas.creacion, req.Peliculas.synopsis, req.Peliculas.generos, ref idReturn, ref errorId, ref errorBD);
-
+                        conexion.SP_CREAR_PELICULA(req.Peliculas.name, req.Peliculas.director,
+                            req.Peliculas.duracion, req.Peliculas.creacion, req.Peliculas.synopsis,
+                            req.Peliculas.generos, ref idReturn, ref errorId, ref errorBD);
 
                         if (idReturn <= 0)
                         {
@@ -124,6 +124,72 @@ namespace Movies.Logica
             {
                 res.respuesta = false;
                 res.errores.Add(ex.Message);
+            }
+
+            return res;
+        }
+
+        public ResPeliculaEsp PeliculaEsp(ReqPeliculaEsp req)
+        {
+            ResPeliculaEsp res = new ResPeliculaEsp
+            {
+                errores = new List<string>(),
+                Peliculas = new Peliculas()
+            };
+
+            if (req != null)
+            {
+                if (req.Peliculas.id <= 0)
+                {
+                    res.respuesta = false;
+                    res.errores.Add("Falta el Id");
+                }
+                else
+                {
+                    try
+                    {
+                        string name = "";
+                        decimal? rating = 0;
+                        string director = "";
+                        int? duracion = 0;
+                        DateTime? creacion = null;
+                        string synopsis = "";
+                        string generos = "";
+
+                        ConexionDataContext conexion = new ConexionDataContext();
+                        conexion.SP_Mostrar_Pelicula_Especifica(req.Peliculas.id, ref name, ref rating, ref director,
+                            ref duracion, ref creacion, ref synopsis, ref generos);
+                        
+                        if (!string.IsNullOrEmpty(name))
+                        {
+                            res.respuesta = true;
+                            res.Peliculas.id = req.Peliculas.id;
+                            res.Peliculas.name = name;
+                            res.Peliculas.rating = (decimal)rating;
+                            res.Peliculas.director = director;
+                            res.Peliculas.duracion = (int)duracion;
+                            res.Peliculas.creacion = (DateTime)creacion;
+                            res.Peliculas.synopsis = synopsis;
+                            res.Peliculas.generos = generos;
+                        }
+                        else
+                        {
+                            res.respuesta = false;
+                            res.errores.Add("Error SP");
+                        }
+                        
+                    }
+                    catch (Exception e)
+                    {
+                        res.respuesta = false;
+                        res.errores.Add(e.Message);
+                    }
+                }
+            }
+            else
+            {
+                res.respuesta = false;
+                res.errores.Add("Falta el Request");
             }
 
             return res;

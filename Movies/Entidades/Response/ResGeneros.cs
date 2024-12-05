@@ -3,8 +3,8 @@ using Movies.Entidades.Modelos;
 
 namespace Movies.Entidades
 {
-    public class ResMostrarPeliculas : ResBase
+    public class ResGeneros : ResBase
     {
-        public List<Peliculas> Peliculas { get; set; }
+        public List<Generos> Generos { get; set; }
     }
 }

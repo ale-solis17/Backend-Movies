@@ -12,24 +12,31 @@ namespace APIRest.Controllers
     {
         [System.Web.Http.HttpPost]
         [System.Web.Http.Route("api/usuario/crear")]
-        public ResCrearUsuario crear(ReqCrearUsuario req)
+        public ResCrearUsuario Crear(ReqCrearUsuario req)
         {
-            return new LogUsuario().crear(req);
+            return new LogUsuario().Crear(req);
         }
 
 
         [System.Web.Http.HttpPost]
         [System.Web.Http.Route("api/usuario/actualizar")]
-        public ResActualizarUsuario actualizar(ReqActualizarUsuario req)
+        public ResActualizarUsuario Actualizar(ReqActualizarUsuario req)
         {
-            return new LogUsuario().actualizar(req);
+            return new LogUsuario().Actualizar(req);
         }
 
         [System.Web.Http.HttpGet]
         [System.Web.Http.Route("api/usuario/mostrar")]
-        public ResMostrarUsuario mostrar(ReqMostrarUsuario req)
+        public ResMostrarUsuario Mostrar(ReqMostrarUsuario req)
         {
-            return new LogUsuario().mostrar(req);
+            return new LogUsuario().Mostrar(req);
+        }
+
+        [System.Web.Http.HttpPost]
+        [System.Web.Http.Route("api/usuario/login")]
+        public ResLogin Login(ReqLogin req)
+        {
+            return new LogUsuario().Login(req);
         }
     }
 

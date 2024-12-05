@@ -19,28 +19,6 @@
     <Parameter Name="ERRORDESCRIPCION" Parameter="eRRORDESCRIPCION" Type="System.String" DbType="NVarChar(MAX)" Direction="InOut" />
     <Return Type="System.Int32" />
   </Function>
-  <Function Name="Movies_DB.SP_CREAR_COMENTARIO" Method="SP_CREAR_COMENTARIO">
-    <Parameter Name="IDUSUARIO" Parameter="iDUSUARIO" Type="System.Int64" DbType="BigInt" />
-    <Parameter Name="IDMOVIE" Parameter="iDMOVIE" Type="System.Int64" DbType="BigInt" />
-    <Parameter Name="COMENTARIO" Parameter="cOMENTARIO" Type="System.String" DbType="NVarChar(MAX)" />
-    <Parameter Name="IDRETURN" Parameter="iDRETURN" Type="System.Int64" DbType="BigInt" Direction="InOut" />
-    <Parameter Name="ERRORID" Parameter="eRRORID" Type="System.Int32" DbType="Int" Direction="InOut" />
-    <Parameter Name="ERRORDESCRIPCION" Parameter="eRRORDESCRIPCION" Type="System.String" DbType="NVarChar(MAX)" Direction="InOut" />
-    <Return Type="System.Int32" />
-  </Function>
-  <Function Name="Movies_DB.SP_CREAR_PELICULA" Method="SP_CREAR_PELICULA">
-    <Parameter Name="NAME" Parameter="nAME" Type="System.String" DbType="NVarChar(50)" />
-    <Parameter Name="RATING" Parameter="rATING" Type="System.Decimal" DbType="Decimal(3,2)" />
-    <Parameter Name="DIRECTOR" Parameter="dIRECTOR" Type="System.String" DbType="NVarChar(50)" />
-    <Parameter Name="MOVIETIME" Parameter="mOVIETIME" Type="System.Int32" DbType="Int" />
-    <Parameter Name="CREATEDAT" Parameter="cREATEDAT" Type="System.DateTime" DbType="Date" />
-    <Parameter Name="SYNOPSIS" Parameter="sYNOPSIS" Type="System.String" DbType="NVarChar(MAX)" />
-    <Parameter Name="MOVIETYPES" Parameter="mOVIETYPES" Type="System.String" DbType="NVarChar(MAX)" />
-    <Parameter Name="IDRETURN" Parameter="iDRETURN" Type="System.Int64" DbType="BigInt" Direction="InOut" />
-    <Parameter Name="ERRORID" Parameter="eRRORID" Type="System.Int32" DbType="Int" Direction="InOut" />
-    <Parameter Name="ERRORDESCRIPCION" Parameter="eRRORDESCRIPCION" Type="System.String" DbType="NVarChar(MAX)" Direction="InOut" />
-    <Return Type="System.Int32" />
-  </Function>
   <Function Name="Movies_DB.SP_CREAR_USUARIO" Method="SP_CREAR_USUARIO">
     <Parameter Name="NAME" Parameter="nAME" Type="System.String" DbType="NVarChar(MAX)" />
     <Parameter Name="LASTNAME" Parameter="lASTNAME" Type="System.String" DbType="NVarChar(MAX)" />
@@ -48,6 +26,52 @@
     <Parameter Name="PASSWORD" Parameter="pASSWORD" Type="System.String" DbType="NVarChar(MAX)" />
     <Parameter Name="NICKNAME" Parameter="nICKNAME" Type="System.String" DbType="NVarChar(MAX)" />
     <Parameter Name="IDRETURN" Parameter="iDRETURN" Type="System.Int32" DbType="Int" Direction="InOut" />
+    <Parameter Name="ERRORID" Parameter="eRRORID" Type="System.Int32" DbType="Int" Direction="InOut" />
+    <Parameter Name="ERRORDESCRIPCION" Parameter="eRRORDESCRIPCION" Type="System.String" DbType="NVarChar(MAX)" Direction="InOut" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="Movies_DB.SP_MOSTRAR_PELICULAS" Method="SP_MOSTRAR_PELICULAS">
+    <ElementType Name="SP_MOSTRAR_PELICULASResult">
+      <Column Name="IdMovie" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Rating" Type="System.Decimal" DbType="Decimal(38,6)" CanBeNull="true" />
+      <Column Name="Director" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="MovieTime" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="InsertDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Synopsis" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Generos" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="Movies_DB.SP_TRAER_USUARIO" Method="SP_TRAER_USUARIO">
+    <Parameter Name="IDUSUARIO" Parameter="iDUSUARIO" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="IDRETURN" Parameter="iDRETURN" Type="System.Int64" DbType="BigInt" Direction="InOut" />
+    <Parameter Name="NAME" Parameter="nAME" Type="System.String" DbType="NVarChar(50)" Direction="InOut" />
+    <Parameter Name="LASTNAME" Parameter="lASTNAME" Type="System.String" DbType="NVarChar(50)" Direction="InOut" />
+    <Parameter Name="MAIL" Parameter="mAIL" Type="System.String" DbType="NVarChar(50)" Direction="InOut" />
+    <Parameter Name="NICKNAME" Parameter="nICKNAME" Type="System.String" DbType="NVarChar(50)" Direction="InOut" />
+    <Parameter Name="USERTYPE" Parameter="uSERTYPE" Type="System.String" DbType="NVarChar(20)" Direction="InOut" />
+    <Parameter Name="USERSTATUS" Parameter="uSERSTATUS" Type="System.String" DbType="NVarChar(20)" Direction="InOut" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="Movies_DB.SP_LOGIN_USUARIO" Method="SP_LOGIN_USUARIO">
+    <Parameter Name="CORREO_ELECTRONICO" Parameter="cORREO_ELECTRONICO" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="PASSWORD" Parameter="pASSWORD" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="IDRETURN" Parameter="iDRETURN" Type="System.Int32" DbType="Int" Direction="InOut" />
+    <Parameter Name="ERRORID" Parameter="eRRORID" Type="System.Int32" DbType="Int" Direction="InOut" />
+    <Parameter Name="ERRORDESCRIPCION" Parameter="eRRORDESCRIPCION" Type="System.String" DbType="NVarChar(MAX)" Direction="InOut" />
+    <Parameter Name="NOMBRE" Parameter="nOMBRE" Type="System.String" DbType="NVarChar(100)" Direction="InOut" />
+    <Parameter Name="APELLIDOS" Parameter="aPELLIDOS" Type="System.String" DbType="NVarChar(100)" Direction="InOut" />
+    <Parameter Name="NICKNAME" Parameter="nICKNAME" Type="System.String" DbType="NVarChar(100)" Direction="InOut" />
+    <Parameter Name="USERTYPE" Parameter="uSERTYPE" Type="System.String" DbType="NVarChar(20)" Direction="InOut" />
+    <Parameter Name="USERSTATUS" Parameter="uSERSTATUS" Type="System.String" DbType="NVarChar(20)" Direction="InOut" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="Movies_DB.SP_CREAR_COMENTARIO" Method="SP_CREAR_COMENTARIO">
+    <Parameter Name="IDUSUARIO" Parameter="iDUSUARIO" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="IDMOVIE" Parameter="iDMOVIE" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="COMENTARIO" Parameter="cOMENTARIO" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="RATING" Parameter="rATING" Type="System.Decimal" DbType="Decimal(3,2)" />
+    <Parameter Name="IDRETURN" Parameter="iDRETURN" Type="System.Int64" DbType="BigInt" Direction="InOut" />
     <Parameter Name="ERRORID" Parameter="eRRORID" Type="System.Int32" DbType="Int" Direction="InOut" />
     <Parameter Name="ERRORDESCRIPCION" Parameter="eRRORDESCRIPCION" Type="System.String" DbType="NVarChar(MAX)" Direction="InOut" />
     <Return Type="System.Int32" />
@@ -62,33 +86,38 @@
       <Column Name="FkIdUser" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
       <Column Name="FkIdMovie" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
       <Column Name="InsertDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Column Name="Comment" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="Comment" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="CommentRating" Type="System.Decimal" DbType="Decimal(3,2)" CanBeNull="true" />
       <Column Name="Deleted" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
     </ElementType>
   </Function>
-  <Function Name="Movies_DB.SP_MOSTRAR_PELICULAS" Method="SP_MOSTRAR_PELICULAS">
-    <ElementType Name="SP_MOSTRAR_PELICULASResult">
-      <Column Name="IdMovie" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
-      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="Rating" Type="System.Decimal" DbType="Decimal(3,2) NOT NULL" CanBeNull="false" />
-      <Column Name="Director" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="MovieTime" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="CreatedAt" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
-      <Column Name="InsertDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Column Name="Synopsis" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="Genero" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
-    </ElementType>
+  <Function Name="Movies_DB.SP_CREAR_PELICULA" Method="SP_CREAR_PELICULA">
+    <Parameter Name="NAME" Parameter="nAME" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="DIRECTOR" Parameter="dIRECTOR" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="MOVIETIME" Parameter="mOVIETIME" Type="System.Int32" DbType="Int" />
+    <Parameter Name="CREATEDAT" Parameter="cREATEDAT" Type="System.DateTime" DbType="Date" />
+    <Parameter Name="SYNOPSIS" Parameter="sYNOPSIS" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="MOVIETYPES" Parameter="mOVIETYPES" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="IDRETURN" Parameter="iDRETURN" Type="System.Int64" DbType="BigInt" Direction="InOut" />
+    <Parameter Name="ERRORID" Parameter="eRRORID" Type="System.Int32" DbType="Int" Direction="InOut" />
+    <Parameter Name="ERRORDESCRIPCION" Parameter="eRRORDESCRIPCION" Type="System.String" DbType="NVarChar(MAX)" Direction="InOut" />
+    <Return Type="System.Int32" />
   </Function>
-  <Function Name="Movies_DB.SP_TRAER_USUARIO" Method="SP_TRAER_USUARIO">
-    <Parameter Name="IDUSUARIO" Parameter="iDUSUARIO" Type="System.Int64" DbType="BigInt" />
-    <ElementType Name="SP_TRAER_USUARIOResult">
-      <Column Name="IdUser" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
-      <Column Name="NameUser" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
-      <Column Name="LastName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="Mail" Type="System.String" DbType="NVarChar(40) NOT NULL" CanBeNull="false" />
-      <Column Name="Nickname" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
-      <Column Name="UserType" Type="System.String" DbType="NVarChar(25) NOT NULL" CanBeNull="false" />
-      <Column Name="UserStatus" Type="System.String" DbType="NVarChar(25) NOT NULL" CanBeNull="false" />
+  <Function Name="Movies_DB.SP_Mostrar_Pelicula_Especifica" Method="SP_Mostrar_Pelicula_Especifica">
+    <Parameter Name="IDMOVIEESPECIFICA" Parameter="iDMOVIEESPECIFICA" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="NAME" Parameter="nAME" Type="System.String" DbType="NVarChar(50)" Direction="InOut" />
+    <Parameter Name="RATING" Parameter="rATING" Type="System.Decimal" DbType="Decimal(3,2)" Direction="InOut" />
+    <Parameter Name="DIRECTOR" Parameter="dIRECTOR" Type="System.String" DbType="NVarChar(50)" Direction="InOut" />
+    <Parameter Name="MOVIETIME" Parameter="mOVIETIME" Type="System.Int32" DbType="Int" Direction="InOut" />
+    <Parameter Name="INSERTDATE" Parameter="iNSERTDATE" Type="System.DateTime" DbType="Date" Direction="InOut" />
+    <Parameter Name="SYNOPSIS" Parameter="sYNOPSIS" Type="System.String" DbType="NVarChar(MAX)" Direction="InOut" />
+    <Parameter Name="GENEROS" Parameter="gENEROS" Type="System.String" DbType="NVarChar(255)" Direction="InOut" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="Movies_DB.SP_GENEROS" Method="SP_GENEROS">
+    <ElementType Name="SP_GENEROSResult">
+      <Column Name="IdMovieType" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(25) NOT NULL" CanBeNull="false" />
     </ElementType>
   </Function>
 </Database>

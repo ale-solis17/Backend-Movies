@@ -53,6 +53,7 @@
       <DependentUpon>Conexion.dbml</DependentUpon>
     </Compile>
     <Compile Include="Entidades\Modelos\Comentario.cs" />
+    <Compile Include="Entidades\Modelos\Generos.cs" />
     <Compile Include="Entidades\Modelos\Peliculas.cs" />
     <Compile Include="Entidades\Modelos\Usuario.cs" />
     <Compile Include="Entidades\Request\ReqActualizarUsuario.cs" />
@@ -60,19 +61,26 @@
     <Compile Include="Entidades\Request\ReqCrearComentario.cs" />
     <Compile Include="Entidades\Request\ReqCrearPelicula.cs" />
     <Compile Include="Entidades\Request\ReqCrearUsuario.cs" />
+    <Compile Include="Entidades\Request\ReqGeneros.cs" />
+    <Compile Include="Entidades\Request\ReqLogin.cs" />
     <Compile Include="Entidades\Request\ReqMostrarComentarios.cs" />
     <Compile Include="Entidades\Request\ReqMostrarPeliculas.cs" />
     <Compile Include="Entidades\Request\ReqMostrarUsuario.cs" />
+    <Compile Include="Entidades\Request\ReqPeliculaEsp.cs" />
     <Compile Include="Entidades\Response\ResActualizarUsuario.cs" />
     <Compile Include="Entidades\Response\ResBase.cs" />
     <Compile Include="Entidades\Response\ResBorrarComentario.cs" />
     <Compile Include="Entidades\Response\ResCrearComentario.cs" />
     <Compile Include="Entidades\Response\ResCrearPelicula.cs" />
     <Compile Include="Entidades\Response\ResCrearUsuario.cs" />
+    <Compile Include="Entidades\Response\ResGeneros.cs" />
+    <Compile Include="Entidades\Response\ResLogin.cs" />
     <Compile Include="Entidades\Response\ResMostrarComentarios.cs" />
     <Compile Include="Entidades\Response\ResMostrarPeliculas.cs" />
     <Compile Include="Entidades\Response\ResMostrarUsuario.cs" />
+    <Compile Include="Entidades\Response\ResPeliculaEsp.cs" />
     <Compile Include="Logica\LogComentario.cs" />
+    <Compile Include="Logica\LogGeneros.cs" />
     <Compile Include="Logica\LogPeliculas.cs" />
     <Compile Include="Logica\LogUsuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

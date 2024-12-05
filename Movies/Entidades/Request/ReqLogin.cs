@@ -1,6 +1,6 @@
 ﻿namespace Movies.Entidades
 {
-    public class ResMostrarUsuario : ResBase
+    public class ReqLogin
     {
         public Usuario Usuario { get; set; }
     }

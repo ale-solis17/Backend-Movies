@@ -12,23 +12,23 @@ namespace APIRest.Controllers
     {
         [System.Web.Http.HttpPost]
         [System.Web.Http.Route("api/comentario/crear")]
-        public ResCrearComentario crear(ReqCrearComentario req )
+        public ResCrearComentario Crear(ReqCrearComentario req )
         {
-            return new LogComentario().crear(req);
+            return new LogComentario().Crear(req);
         }
 
         [System.Web.Http.HttpPost]
         [System.Web.Http.Route("api/comentario/borrar")]
-        public ResBorrarComentario borrar(ReqBorrarComentario req)
+        public ResBorrarComentario Borrar(ReqBorrarComentario req)
         {
-            return new LogComentario().borrar(req);
+            return new LogComentario().Borrar(req);
         }
 
         [System.Web.Http.HttpGet]
         [System.Web.Http.Route("api/comentario/mostrar")]
-        public ResMostrarComentarios mostrar(ReqMostrarComentarios req)
+        public ResMostrarComentarios Mostrar(ReqMostrarComentarios req)
         {
-            return new LogComentario().mostrar(req);
+            return new LogComentario().Mostrar(req);
         }
     }
 }

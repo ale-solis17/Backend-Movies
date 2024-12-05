@@ -11,10 +11,12 @@ namespace Movies.Logica
 {
     public class LogComentario
     {
-        public ResCrearComentario crear(ReqCrearComentario req)
+        public ResCrearComentario Crear(ReqCrearComentario req)
         {
-            ResCrearComentario res = new ResCrearComentario();
-            res.errores = new List<string>();
+            ResCrearComentario res = new ResCrearComentario
+            {
+                errores = new List<string>()
+            };
 
             try
             {
@@ -24,37 +26,40 @@ namespace Movies.Logica
                     {
                         res.respuesta = false;
                         res.errores.Add("Falta el IdUsuario");
-
-                    } else if (req.Comentario.idPelicula < 0)
+                    }
+                    else if (req.Comentario.idPelicula < 0)
                     {
                         res.respuesta = false;
                         res.errores.Add("Falta el IdPelicula");
-
-                    } else if (String.IsNullOrEmpty(req.Comentario.comentario))
+                    }
+                    else if (String.IsNullOrEmpty(req.Comentario.comentario))
                     {
                         res.respuesta = false;
                         res.errores.Add("Falta el comentario");
-                    } else
+                    }
+                    else
                     {
                         long? idReturn = 0;
                         int? errorId = 0;
                         string errorBD = "";
 
                         ConexionDataContext conexion = new ConexionDataContext();
-                        conexion.SP_CREAR_COMENTARIO(req.Comentario.idUsuario,req.Comentario.idPelicula,req.Comentario.comentario, ref idReturn, ref errorId, ref errorBD);
+                        conexion.SP_CREAR_COMENTARIO(req.Comentario.idUsuario, req.Comentario.idPelicula,
+                            req.Comentario.comentario, req.Comentario.rating, ref idReturn, ref errorId, ref errorBD);
 
                         if (idReturn <= 0)
                         {
-                            res.respuesta=false;
+                            res.respuesta = false;
                             res.errores.Add(errorBD);
-                        } else
+                        }
+                        else
                         {
                             res.respuesta = true;
                         }
                     }
-                } 
-                else 
-                { 
+                }
+                else
+                {
                     res.respuesta = false;
                     res.errores.Add("Falta el req");
                 }
@@ -68,10 +73,12 @@ namespace Movies.Logica
             return res;
         }
 
-        public ResBorrarComentario borrar(ReqBorrarComentario req)
+        public ResBorrarComentario Borrar(ReqBorrarComentario req)
         {
-            ResBorrarComentario res = new ResBorrarComentario();
-            res.errores = new List<string>();
+            ResBorrarComentario res = new ResBorrarComentario
+            {
+                errores = new List<string>()
+            };
 
             try
             {
@@ -81,11 +88,12 @@ namespace Movies.Logica
                     {
                         res.respuesta = false;
                         res.errores.Add("Falta el idUsuario");
-                    } else if (req.Comentario.Id <= 0)
+                    }
+                    else if (req.Comentario.Id <= 0)
                     {
                         res.respuesta = false;
                         res.errores.Add("Falta el idComentario");
-                    } 
+                    }
                     else
                     {
                         long? idReturn = 0;
@@ -93,17 +101,18 @@ namespace Movies.Logica
                         string errorBD = "";
 
                         ConexionDataContext conexion = new ConexionDataContext();
-                        conexion.SP_BORRAR_COMENTARIO(req.Comentario.idUsuario, req.Comentario.Id, ref idReturn, ref errorId, ref errorBD);
+                        conexion.SP_BORRAR_COMENTARIO(req.Comentario.idUsuario, req.Comentario.Id, ref idReturn,
+                            ref errorId, ref errorBD);
 
                         if (errorId > 0)
                         {
-                            res.respuesta = false ;
+                            res.respuesta = false;
                             res.errores.Add(errorBD);
-                        } else
-                        {
-                            res.respuesta = true ;
                         }
-
+                        else
+                        {
+                            res.respuesta = true;
+                        }
                     }
                 }
                 else
@@ -117,22 +126,25 @@ namespace Movies.Logica
                 res.respuesta = false;
                 res.errores.Add(ex.Message);
             }
+
             return res;
         }
 
-        public ResMostrarComentarios mostrar (ReqMostrarComentarios req)
+        public ResMostrarComentarios Mostrar(ReqMostrarComentarios req)
         {
-            ResMostrarComentarios res = new ResMostrarComentarios();
-            res.errores = new List<string>();
-            res.Comentarios = new List<Comentario>();
+            ResMostrarComentarios res = new ResMostrarComentarios
+            {
+                errores = new List<string>(),
+                Comentarios = new List<Comentario>()
+            };
 
             try
             {
                 if (req.Comentario.idPelicula <= 0)
                 {
-                    res.respuesta = false ;
+                    res.respuesta = false;
                     res.errores.Add("Falta el idPelicula");
-                } 
+                }
                 else
                 {
                     int? idReturn = 0;
@@ -140,13 +152,16 @@ namespace Movies.Logica
                     string errorBD = "";
 
                     ConexionDataContext conexion = new ConexionDataContext();
-                    List<SP_MOSTRAR_COMENTARIOSResult> listaTipoComplejo = new List<SP_MOSTRAR_COMENTARIOSResult> ();
-                    listaTipoComplejo = conexion.SP_MOSTRAR_COMENTARIOS(req.Comentario.idPelicula, ref idReturn, ref errorId, ref errorBD).ToList();
+                    List<SP_MOSTRAR_COMENTARIOSResult> listaTipoComplejo = new List<SP_MOSTRAR_COMENTARIOSResult>();
+                    listaTipoComplejo = conexion
+                        .SP_MOSTRAR_COMENTARIOS(req.Comentario.idPelicula, ref idReturn, ref errorId, ref errorBD)
+                        .ToList();
 
                     foreach (SP_MOSTRAR_COMENTARIOSResult unTipo in listaTipoComplejo)
                     {
-                        res.Comentarios.Add(this.factoriaComentarios(unTipo));
+                        res.Comentarios.Add(this.FactoriaComentarios(unTipo));
                     }
+
                     res.respuesta = true;
                 }
             }
@@ -159,7 +174,7 @@ namespace Movies.Logica
             return res;
         }
 
-        private Comentario factoriaComentarios (SP_MOSTRAR_COMENTARIOSResult unTipoComplejo)
+        private Comentario FactoriaComentarios(SP_MOSTRAR_COMENTARIOSResult unTipoComplejo)
         {
             Comentario comentarioRetornar = new Comentario();
             comentarioRetornar.Id = unTipoComplejo.IdComments;
@@ -167,6 +182,7 @@ namespace Movies.Logica
             comentarioRetornar.idPelicula = unTipoComplejo.FkIdMovie;
             comentarioRetornar.creationDate = unTipoComplejo.InsertDate;
             comentarioRetornar.comentario = unTipoComplejo.Comment;
+            comentarioRetornar.rating = unTipoComplejo.CommentRating;
 
             return comentarioRetornar;
         }
