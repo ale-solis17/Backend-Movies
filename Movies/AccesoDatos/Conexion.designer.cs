@@ -92,13 +92,6 @@ namespace Movies.AccesoDatos
 			return ((int)(result.ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="Movies_DB.SP_MOSTRAR_PELICULAS")]
-		public ISingleResult<SP_MOSTRAR_PELICULASResult> SP_MOSTRAR_PELICULAS()
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
-			return ((ISingleResult<SP_MOSTRAR_PELICULASResult>)(result.ReturnValue));
-		}
-		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="Movies_DB.SP_TRAER_USUARIO")]
 		public int SP_TRAER_USUARIO([global::System.Data.Linq.Mapping.ParameterAttribute(Name="IDUSUARIO", DbType="BigInt")] System.Nullable<long> iDUSUARIO, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="IDRETURN", DbType="BigInt")] ref System.Nullable<long> iDRETURN, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="NAME", DbType="NVarChar(50)")] ref string nAME, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="LASTNAME", DbType="NVarChar(50)")] ref string lASTNAME, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="MAIL", DbType="NVarChar(50)")] ref string mAIL, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="NICKNAME", DbType="NVarChar(50)")] ref string nICKNAME, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="USERTYPE", DbType="NVarChar(20)")] ref string uSERTYPE, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="USERSTATUS", DbType="NVarChar(20)")] ref string uSERSTATUS)
 		{
@@ -148,20 +141,34 @@ namespace Movies.AccesoDatos
 			return ((ISingleResult<SP_MOSTRAR_COMENTARIOSResult>)(result.ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="Movies_DB.SP_CREAR_PELICULA")]
-		public int SP_CREAR_PELICULA([global::System.Data.Linq.Mapping.ParameterAttribute(Name="NAME", DbType="NVarChar(50)")] string nAME, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="DIRECTOR", DbType="NVarChar(50)")] string dIRECTOR, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="MOVIETIME", DbType="Int")] System.Nullable<int> mOVIETIME, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="CREATEDAT", DbType="Date")] System.Nullable<System.DateTime> cREATEDAT, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="SYNOPSIS", DbType="NVarChar(MAX)")] string sYNOPSIS, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="MOVIETYPES", DbType="NVarChar(MAX)")] string mOVIETYPES, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="IDRETURN", DbType="BigInt")] ref System.Nullable<long> iDRETURN, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ERRORID", DbType="Int")] ref System.Nullable<int> eRRORID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ERRORDESCRIPCION", DbType="NVarChar(MAX)")] ref string eRRORDESCRIPCION)
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="Movies_DB.SP_GENEROS")]
+		public ISingleResult<SP_GENEROSResult> SP_GENEROS()
 		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), nAME, dIRECTOR, mOVIETIME, cREATEDAT, sYNOPSIS, mOVIETYPES, iDRETURN, eRRORID, eRRORDESCRIPCION);
-			iDRETURN = ((System.Nullable<long>)(result.GetParameterValue(6)));
-			eRRORID = ((System.Nullable<int>)(result.GetParameterValue(7)));
-			eRRORDESCRIPCION = ((string)(result.GetParameterValue(8)));
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
+			return ((ISingleResult<SP_GENEROSResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="Movies_DB.SP_CREAR_PELICULA")]
+		public int SP_CREAR_PELICULA([global::System.Data.Linq.Mapping.ParameterAttribute(Name="NAME", DbType="NVarChar(50)")] string nAME, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="DIRECTOR", DbType="NVarChar(50)")] string dIRECTOR, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="MOVIETIME", DbType="Int")] System.Nullable<int> mOVIETIME, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="CREATEDAT", DbType="Date")] System.Nullable<System.DateTime> cREATEDAT, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="SYNOPSIS", DbType="NVarChar(MAX)")] string sYNOPSIS, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="MOVIETYPES", DbType="NVarChar(MAX)")] string mOVIETYPES, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="URL", DbType="NVarChar(255)")] string uRL, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="IDRETURN", DbType="BigInt")] ref System.Nullable<long> iDRETURN, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ERRORID", DbType="Int")] ref System.Nullable<int> eRRORID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ERRORDESCRIPCION", DbType="NVarChar(MAX)")] ref string eRRORDESCRIPCION)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), nAME, dIRECTOR, mOVIETIME, cREATEDAT, sYNOPSIS, mOVIETYPES, uRL, iDRETURN, eRRORID, eRRORDESCRIPCION);
+			iDRETURN = ((System.Nullable<long>)(result.GetParameterValue(7)));
+			eRRORID = ((System.Nullable<int>)(result.GetParameterValue(8)));
+			eRRORDESCRIPCION = ((string)(result.GetParameterValue(9)));
 			return ((int)(result.ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="Movies_DB.SP_Mostrar_Pelicula_Especifica")]
-		public int SP_Mostrar_Pelicula_Especifica([global::System.Data.Linq.Mapping.ParameterAttribute(Name="IDMOVIEESPECIFICA", DbType="BigInt")] System.Nullable<long> iDMOVIEESPECIFICA, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="NAME", DbType="NVarChar(50)")] ref string nAME, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="RATING", DbType="Decimal(3,2)")] ref System.Nullable<decimal> rATING, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="DIRECTOR", DbType="NVarChar(50)")] ref string dIRECTOR, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="MOVIETIME", DbType="Int")] ref System.Nullable<int> mOVIETIME, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="INSERTDATE", DbType="Date")] ref System.Nullable<System.DateTime> iNSERTDATE, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="SYNOPSIS", DbType="NVarChar(MAX)")] ref string sYNOPSIS, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="GENEROS", DbType="NVarChar(255)")] ref string gENEROS)
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="Movies_DB.SP_MOSTRAR_PELICULAS")]
+		public ISingleResult<SP_MOSTRAR_PELICULASResult> SP_MOSTRAR_PELICULAS()
 		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), iDMOVIEESPECIFICA, nAME, rATING, dIRECTOR, mOVIETIME, iNSERTDATE, sYNOPSIS, gENEROS);
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
+			return ((ISingleResult<SP_MOSTRAR_PELICULASResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="Movies_DB.SP_Mostrar_Pelicula_Especifica")]
+		public int SP_Mostrar_Pelicula_Especifica([global::System.Data.Linq.Mapping.ParameterAttribute(Name="IDMOVIEESPECIFICA", DbType="BigInt")] System.Nullable<long> iDMOVIEESPECIFICA, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="NAME", DbType="NVarChar(50)")] ref string nAME, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="RATING", DbType="Decimal(3,2)")] ref System.Nullable<decimal> rATING, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="DIRECTOR", DbType="NVarChar(50)")] ref string dIRECTOR, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="MOVIETIME", DbType="Int")] ref System.Nullable<int> mOVIETIME, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="INSERTDATE", DbType="Date")] ref System.Nullable<System.DateTime> iNSERTDATE, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="SYNOPSIS", DbType="NVarChar(MAX)")] ref string sYNOPSIS, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="GENEROS", DbType="NVarChar(255)")] ref string gENEROS, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="URL", DbType="NVarChar(255)")] ref string uRL)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), iDMOVIEESPECIFICA, nAME, rATING, dIRECTOR, mOVIETIME, iNSERTDATE, sYNOPSIS, gENEROS, uRL);
 			nAME = ((string)(result.GetParameterValue(1)));
 			rATING = ((System.Nullable<decimal>)(result.GetParameterValue(2)));
 			dIRECTOR = ((string)(result.GetParameterValue(3)));
@@ -169,166 +176,8 @@ namespace Movies.AccesoDatos
 			iNSERTDATE = ((System.Nullable<System.DateTime>)(result.GetParameterValue(5)));
 			sYNOPSIS = ((string)(result.GetParameterValue(6)));
 			gENEROS = ((string)(result.GetParameterValue(7)));
+			uRL = ((string)(result.GetParameterValue(8)));
 			return ((int)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="Movies_DB.SP_GENEROS")]
-		public ISingleResult<SP_GENEROSResult> SP_GENEROS()
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
-			return ((ISingleResult<SP_GENEROSResult>)(result.ReturnValue));
-		}
-	}
-	
-	public partial class SP_MOSTRAR_PELICULASResult
-	{
-		
-		private long _IdMovie;
-		
-		private string _Name;
-		
-		private System.Nullable<decimal> _Rating;
-		
-		private string _Director;
-		
-		private int _MovieTime;
-		
-		private System.DateTime _InsertDate;
-		
-		private string _Synopsis;
-		
-		private string _Generos;
-		
-		public SP_MOSTRAR_PELICULASResult()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IdMovie", DbType="BigInt NOT NULL")]
-		public long IdMovie
-		{
-			get
-			{
-				return this._IdMovie;
-			}
-			set
-			{
-				if ((this._IdMovie != value))
-				{
-					this._IdMovie = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string Name
-		{
-			get
-			{
-				return this._Name;
-			}
-			set
-			{
-				if ((this._Name != value))
-				{
-					this._Name = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Rating", DbType="Decimal(38,6)")]
-		public System.Nullable<decimal> Rating
-		{
-			get
-			{
-				return this._Rating;
-			}
-			set
-			{
-				if ((this._Rating != value))
-				{
-					this._Rating = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Director", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string Director
-		{
-			get
-			{
-				return this._Director;
-			}
-			set
-			{
-				if ((this._Director != value))
-				{
-					this._Director = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MovieTime", DbType="Int NOT NULL")]
-		public int MovieTime
-		{
-			get
-			{
-				return this._MovieTime;
-			}
-			set
-			{
-				if ((this._MovieTime != value))
-				{
-					this._MovieTime = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InsertDate", DbType="DateTime NOT NULL")]
-		public System.DateTime InsertDate
-		{
-			get
-			{
-				return this._InsertDate;
-			}
-			set
-			{
-				if ((this._InsertDate != value))
-				{
-					this._InsertDate = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Synopsis", DbType="NVarChar(MAX)")]
-		public string Synopsis
-		{
-			get
-			{
-				return this._Synopsis;
-			}
-			set
-			{
-				if ((this._Synopsis != value))
-				{
-					this._Synopsis = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Generos", DbType="NVarChar(4000)")]
-		public string Generos
-		{
-			get
-			{
-				return this._Generos;
-			}
-			set
-			{
-				if ((this._Generos != value))
-				{
-					this._Generos = value;
-				}
-			}
 		}
 	}
 	
@@ -505,6 +354,176 @@ namespace Movies.AccesoDatos
 				if ((this._Name != value))
 				{
 					this._Name = value;
+				}
+			}
+		}
+	}
+	
+	public partial class SP_MOSTRAR_PELICULASResult
+	{
+		
+		private long _IdMovie;
+		
+		private string _Name;
+		
+		private System.Nullable<decimal> _Rating;
+		
+		private string _Director;
+		
+		private int _MovieTime;
+		
+		private System.DateTime _InsertDate;
+		
+		private string _Synopsis;
+		
+		private string _Generos;
+		
+		private string _URL;
+		
+		public SP_MOSTRAR_PELICULASResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IdMovie", DbType="BigInt NOT NULL")]
+		public long IdMovie
+		{
+			get
+			{
+				return this._IdMovie;
+			}
+			set
+			{
+				if ((this._IdMovie != value))
+				{
+					this._IdMovie = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string Name
+		{
+			get
+			{
+				return this._Name;
+			}
+			set
+			{
+				if ((this._Name != value))
+				{
+					this._Name = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Rating", DbType="Decimal(38,6)")]
+		public System.Nullable<decimal> Rating
+		{
+			get
+			{
+				return this._Rating;
+			}
+			set
+			{
+				if ((this._Rating != value))
+				{
+					this._Rating = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Director", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string Director
+		{
+			get
+			{
+				return this._Director;
+			}
+			set
+			{
+				if ((this._Director != value))
+				{
+					this._Director = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MovieTime", DbType="Int NOT NULL")]
+		public int MovieTime
+		{
+			get
+			{
+				return this._MovieTime;
+			}
+			set
+			{
+				if ((this._MovieTime != value))
+				{
+					this._MovieTime = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InsertDate", DbType="DateTime NOT NULL")]
+		public System.DateTime InsertDate
+		{
+			get
+			{
+				return this._InsertDate;
+			}
+			set
+			{
+				if ((this._InsertDate != value))
+				{
+					this._InsertDate = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Synopsis", DbType="NVarChar(MAX)")]
+		public string Synopsis
+		{
+			get
+			{
+				return this._Synopsis;
+			}
+			set
+			{
+				if ((this._Synopsis != value))
+				{
+					this._Synopsis = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Generos", DbType="NVarChar(4000)")]
+		public string Generos
+		{
+			get
+			{
+				return this._Generos;
+			}
+			set
+			{
+				if ((this._Generos != value))
+				{
+					this._Generos = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_URL", DbType="NVarChar(255)")]
+		public string URL
+		{
+			get
+			{
+				return this._URL;
+			}
+			set
+			{
+				if ((this._URL != value))
+				{
+					this._URL = value;
 				}
 			}
 		}

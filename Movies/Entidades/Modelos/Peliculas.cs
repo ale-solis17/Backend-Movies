@@ -10,5 +10,6 @@
         public System.DateTime creacion { get; set; }
         public string synopsis { get; set; }
         public string generos { get; set; }
+        public string URL { get; set; }
     }
 }

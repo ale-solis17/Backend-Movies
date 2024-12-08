@@ -101,7 +101,7 @@ namespace Movies.Logica
                         ConexionDataContext conexion = new ConexionDataContext();
                         conexion.SP_CREAR_PELICULA(req.Peliculas.name, req.Peliculas.director,
                             req.Peliculas.duracion, req.Peliculas.creacion, req.Peliculas.synopsis,
-                            req.Peliculas.generos, ref idReturn, ref errorId, ref errorBD);
+                            req.Peliculas.generos, req.Peliculas.URL, ref idReturn, ref errorId, ref errorBD);
 
                         if (idReturn <= 0)
                         {
@@ -155,10 +155,11 @@ namespace Movies.Logica
                         DateTime? creacion = null;
                         string synopsis = "";
                         string generos = "";
-
+                        string url = "";
+                        
                         ConexionDataContext conexion = new ConexionDataContext();
                         conexion.SP_Mostrar_Pelicula_Especifica(req.Peliculas.id, ref name, ref rating, ref director,
-                            ref duracion, ref creacion, ref synopsis, ref generos);
+                            ref duracion, ref creacion, ref synopsis, ref generos, ref url);
                         
                         if (!string.IsNullOrEmpty(name))
                         {
@@ -171,6 +172,7 @@ namespace Movies.Logica
                             res.Peliculas.creacion = (DateTime)creacion;
                             res.Peliculas.synopsis = synopsis;
                             res.Peliculas.generos = generos;
+                            res.Peliculas.URL = url;
                         }
                         else
                         {
