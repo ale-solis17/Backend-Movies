@@ -26,5 +26,12 @@ namespace APIRest.Controllers
         {
             return new LogPeliculas().PeliculaEsp(req);
         }
+        
+        [HttpGet]
+        [Route("api/peliculas/inicio")]
+        public ResPeliculaInicio Inicio(ReqPeliculaInicio req)
+        {
+            return new LogPeliculas().PeliculaInicio(req);
+        }
     }
 }

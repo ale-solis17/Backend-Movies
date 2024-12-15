@@ -123,4 +123,23 @@
     <Parameter Name="URL" Parameter="uRL" Type="System.String" DbType="NVarChar(255)" Direction="InOut" />
     <Return Type="System.Int32" />
   </Function>
+  <Function Name="Movies_DB.SP_PELICULA_INICIO" Method="SP_PELICULA_INICIO">
+    <Parameter Name="FIRSTID" Parameter="fIRSTID" Type="System.Int64" DbType="BigInt" Direction="InOut" />
+    <Parameter Name="NAME" Parameter="nAME" Type="System.String" DbType="NVarChar(50)" Direction="InOut" />
+    <Parameter Name="DIRECTOR" Parameter="dIRECTOR" Type="System.String" DbType="NVarChar(50)" Direction="InOut" />
+    <Parameter Name="MOVIETIME" Parameter="mOVIETIME" Type="System.Int32" DbType="Int" Direction="InOut" />
+    <Parameter Name="CREATEDAT" Parameter="cREATEDAT" Type="System.DateTime" DbType="Date" Direction="InOut" />
+    <Parameter Name="SYNOPSIS" Parameter="sYNOPSIS" Type="System.String" DbType="NVarChar(MAX)" Direction="InOut" />
+    <Parameter Name="GENEROS" Parameter="gENEROS" Type="System.String" DbType="NVarChar(MAX)" Direction="InOut" />
+    <Parameter Name="URL" Parameter="uRL" Type="System.String" DbType="NVarChar(MAX)" Direction="InOut" />
+    <ElementType Name="SP_PELICULA_INICIOResult">
+      <Column Name="IdComments" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="FkIdUser" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="FkIdMovie" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="InsertDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Comment" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="Deleted" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="CommentRating" Type="System.Decimal" DbType="Decimal(3,2)" CanBeNull="true" />
+    </ElementType>
+  </Function>
 </Database>

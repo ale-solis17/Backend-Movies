@@ -156,11 +156,11 @@ namespace Movies.Logica
                         string synopsis = "";
                         string generos = "";
                         string url = "";
-                        
+
                         ConexionDataContext conexion = new ConexionDataContext();
                         conexion.SP_Mostrar_Pelicula_Especifica(req.Peliculas.id, ref name, ref rating, ref director,
                             ref duracion, ref creacion, ref synopsis, ref generos, ref url);
-                        
+
                         if (!string.IsNullOrEmpty(name))
                         {
                             res.respuesta = true;
@@ -179,7 +179,6 @@ namespace Movies.Logica
                             res.respuesta = false;
                             res.errores.Add("Error SP");
                         }
-                        
                     }
                     catch (Exception e)
                     {
@@ -195,6 +194,93 @@ namespace Movies.Logica
             }
 
             return res;
+        }
+
+        public ResPeliculaInicio PeliculaInicio(ReqPeliculaInicio req)
+        {
+            ResPeliculaInicio res = new ResPeliculaInicio()
+            {
+                errores = new List<string>(),
+                Peliculas = new Peliculas
+                {
+                    id = 0,
+                    name = null,
+                    rating = 0,
+                    director = null,
+                    duracion = 0,
+                    creacion = default,
+                    synopsis = null,
+                    generos = null,
+                    URL = null
+                },
+               Comentario = new List<Comentario>()
+            };
+
+            if (req != null)
+            {
+                try
+                {
+                    long? idReturn = 0;
+                    string name = "";
+                    string director = "";
+                    int? duracion = 0;
+                    DateTime? creacion = null;
+                    string synopsis = "";
+                    string generos = "";
+                    string url = "";
+                    ConexionDataContext conexion = new ConexionDataContext();
+                    List<SP_PELICULA_INICIOResult> listaTipoComplejo = new List<SP_PELICULA_INICIOResult>();
+                    listaTipoComplejo = conexion.SP_PELICULA_INICIO(ref idReturn, ref name, ref director, ref duracion,
+                        ref creacion, ref synopsis, ref generos, ref url).ToList();
+                    if (idReturn != 0)
+                    {
+                        res.respuesta = true;
+                        res.Peliculas.id = (long)idReturn;
+                        res.Peliculas.name = name;
+                        res.Peliculas.director = director;
+                        res.Peliculas.duracion = (int)duracion;
+                        res.Peliculas.creacion = (DateTime)creacion;
+                        res.Peliculas.synopsis = synopsis;
+                        res.Peliculas.generos = generos;
+                        res.Peliculas.URL = url;
+                        
+                        foreach (SP_PELICULA_INICIOResult unTipo in listaTipoComplejo)
+                        {
+                            res.Comentario.Add(this.FactoriaComentarios(unTipo));
+                        }
+                    }
+                    else
+                    {
+                        res.respuesta = false;
+                        res.errores.Add("Error SP");
+                    }
+                }
+                catch (Exception e)
+                {
+                    res.respuesta = false;
+                    res.errores.Add(e.Message);
+                }
+            }
+            else
+            {
+                res.respuesta = false;
+                res.errores.Add("Falta el Request");
+            }
+
+            return res;
+        }
+        
+        private Comentario FactoriaComentarios(SP_PELICULA_INICIOResult unTipoComplejo)
+        {
+            Comentario comentarioRetornar = new Comentario();
+            comentarioRetornar.Id = unTipoComplejo.IdComments;
+            comentarioRetornar.idUsuario = unTipoComplejo.FkIdUser;
+            comentarioRetornar.idPelicula = unTipoComplejo.FkIdMovie;
+            comentarioRetornar.creationDate = unTipoComplejo.InsertDate;
+            comentarioRetornar.comentario = unTipoComplejo.Comment;
+            comentarioRetornar.rating = unTipoComplejo.CommentRating;
+
+            return comentarioRetornar;
         }
     }
 }

@@ -67,6 +67,7 @@
     <Compile Include="Entidades\Request\ReqMostrarPeliculas.cs" />
     <Compile Include="Entidades\Request\ReqMostrarUsuario.cs" />
     <Compile Include="Entidades\Request\ReqPeliculaEsp.cs" />
+    <Compile Include="Entidades\Request\ReqPeliculaInicio.cs" />
     <Compile Include="Entidades\Response\ResActualizarUsuario.cs" />
     <Compile Include="Entidades\Response\ResBase.cs" />
     <Compile Include="Entidades\Response\ResBorrarComentario.cs" />
@@ -79,6 +80,7 @@
     <Compile Include="Entidades\Response\ResMostrarPeliculas.cs" />
     <Compile Include="Entidades\Response\ResMostrarUsuario.cs" />
     <Compile Include="Entidades\Response\ResPeliculaEsp.cs" />
+    <Compile Include="Entidades\Response\ResPeliculaInicio.cs" />
     <Compile Include="Logica\LogComentario.cs" />
     <Compile Include="Logica\LogGeneros.cs" />
     <Compile Include="Logica\LogPeliculas.cs" />
