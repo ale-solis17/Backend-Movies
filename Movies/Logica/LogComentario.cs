@@ -178,7 +178,7 @@ namespace Movies.Logica
         {
             Comentario comentarioRetornar = new Comentario();
             comentarioRetornar.Id = unTipoComplejo.IdComments;
-            comentarioRetornar.idUsuario = unTipoComplejo.FkIdUser;
+            comentarioRetornar.nickname = unTipoComplejo.Nickname;
             comentarioRetornar.idPelicula = unTipoComplejo.FkIdMovie;
             comentarioRetornar.creationDate = unTipoComplejo.InsertDate;
             comentarioRetornar.comentario = unTipoComplejo.Comment;
