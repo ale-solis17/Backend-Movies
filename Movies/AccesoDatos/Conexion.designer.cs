@@ -170,6 +170,16 @@ namespace Movies.AccesoDatos
 			return ((int)(result.ReturnValue));
 		}
 		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="Movies_DB.SP_MOSTRAR_COMENTARIOS")]
+		public ISingleResult<SP_MOSTRAR_COMENTARIOSResult> SP_MOSTRAR_COMENTARIOS([global::System.Data.Linq.Mapping.ParameterAttribute(Name="IDMOVIE", DbType="BigInt")] System.Nullable<long> iDMOVIE, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="IDRETURN", DbType="Int")] ref System.Nullable<int> iDRETURN, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ERRORID", DbType="Int")] ref System.Nullable<int> eRRORID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ERRORDESCRIPCION", DbType="NVarChar(MAX)")] ref string eRRORDESCRIPCION)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), iDMOVIE, iDRETURN, eRRORID, eRRORDESCRIPCION);
+			iDRETURN = ((System.Nullable<int>)(result.GetParameterValue(1)));
+			eRRORID = ((System.Nullable<int>)(result.GetParameterValue(2)));
+			eRRORDESCRIPCION = ((string)(result.GetParameterValue(3)));
+			return ((ISingleResult<SP_MOSTRAR_COMENTARIOSResult>)(result.ReturnValue));
+		}
+		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="Movies_DB.SP_PELICULA_INICIO")]
 		public ISingleResult<SP_PELICULA_INICIOResult> SP_PELICULA_INICIO([global::System.Data.Linq.Mapping.ParameterAttribute(Name="FIRSTID", DbType="BigInt")] ref System.Nullable<long> fIRSTID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="NAME", DbType="NVarChar(50)")] ref string nAME, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="DIRECTOR", DbType="NVarChar(50)")] ref string dIRECTOR, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="MOVIETIME", DbType="Int")] ref System.Nullable<int> mOVIETIME, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="CREATEDAT", DbType="Date")] ref System.Nullable<System.DateTime> cREATEDAT, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="SYNOPSIS", DbType="NVarChar(MAX)")] ref string sYNOPSIS, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="GENEROS", DbType="NVarChar(MAX)")] ref string gENEROS, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="URL", DbType="NVarChar(MAX)")] ref string uRL)
 		{
@@ -183,16 +193,6 @@ namespace Movies.AccesoDatos
 			gENEROS = ((string)(result.GetParameterValue(6)));
 			uRL = ((string)(result.GetParameterValue(7)));
 			return ((ISingleResult<SP_PELICULA_INICIOResult>)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="Movies_DB.SP_MOSTRAR_COMENTARIOS")]
-		public ISingleResult<SP_MOSTRAR_COMENTARIOSResult> SP_MOSTRAR_COMENTARIOS([global::System.Data.Linq.Mapping.ParameterAttribute(Name="IDMOVIE", DbType="BigInt")] System.Nullable<long> iDMOVIE, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="IDRETURN", DbType="Int")] ref System.Nullable<int> iDRETURN, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ERRORID", DbType="Int")] ref System.Nullable<int> eRRORID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ERRORDESCRIPCION", DbType="NVarChar(MAX)")] ref string eRRORDESCRIPCION)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), iDMOVIE, iDRETURN, eRRORID, eRRORDESCRIPCION);
-			iDRETURN = ((System.Nullable<int>)(result.GetParameterValue(1)));
-			eRRORID = ((System.Nullable<int>)(result.GetParameterValue(2)));
-			eRRORDESCRIPCION = ((string)(result.GetParameterValue(3)));
-			return ((ISingleResult<SP_MOSTRAR_COMENTARIOSResult>)(result.ReturnValue));
 		}
 	}
 	
@@ -410,140 +410,6 @@ namespace Movies.AccesoDatos
 		}
 	}
 	
-	public partial class SP_PELICULA_INICIOResult
-	{
-		
-		private long _IdComments;
-		
-		private long _FkIdUser;
-		
-		private long _FkIdMovie;
-		
-		private System.DateTime _InsertDate;
-		
-		private string _Comment;
-		
-		private byte _Deleted;
-		
-		private System.Nullable<decimal> _CommentRating;
-		
-		public SP_PELICULA_INICIOResult()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IdComments", DbType="BigInt NOT NULL")]
-		public long IdComments
-		{
-			get
-			{
-				return this._IdComments;
-			}
-			set
-			{
-				if ((this._IdComments != value))
-				{
-					this._IdComments = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FkIdUser", DbType="BigInt NOT NULL")]
-		public long FkIdUser
-		{
-			get
-			{
-				return this._FkIdUser;
-			}
-			set
-			{
-				if ((this._FkIdUser != value))
-				{
-					this._FkIdUser = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FkIdMovie", DbType="BigInt NOT NULL")]
-		public long FkIdMovie
-		{
-			get
-			{
-				return this._FkIdMovie;
-			}
-			set
-			{
-				if ((this._FkIdMovie != value))
-				{
-					this._FkIdMovie = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InsertDate", DbType="DateTime NOT NULL")]
-		public System.DateTime InsertDate
-		{
-			get
-			{
-				return this._InsertDate;
-			}
-			set
-			{
-				if ((this._InsertDate != value))
-				{
-					this._InsertDate = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Comment", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
-		public string Comment
-		{
-			get
-			{
-				return this._Comment;
-			}
-			set
-			{
-				if ((this._Comment != value))
-				{
-					this._Comment = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Deleted", DbType="TinyInt NOT NULL")]
-		public byte Deleted
-		{
-			get
-			{
-				return this._Deleted;
-			}
-			set
-			{
-				if ((this._Deleted != value))
-				{
-					this._Deleted = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CommentRating", DbType="Decimal(3,2)")]
-		public System.Nullable<decimal> CommentRating
-		{
-			get
-			{
-				return this._CommentRating;
-			}
-			set
-			{
-				if ((this._CommentRating != value))
-				{
-					this._CommentRating = value;
-				}
-			}
-		}
-	}
-	
 	public partial class SP_MOSTRAR_COMENTARIOSResult
 	{
 		
@@ -673,6 +539,140 @@ namespace Movies.AccesoDatos
 				if ((this._Deleted != value))
 				{
 					this._Deleted = value;
+				}
+			}
+		}
+	}
+	
+	public partial class SP_PELICULA_INICIOResult
+	{
+		
+		private long _IdComments;
+		
+		private string _Nickname;
+		
+		private long _FkIdMovie;
+		
+		private System.DateTime _InsertDate;
+		
+		private string _Comment;
+		
+		private byte _Deleted;
+		
+		private System.Nullable<decimal> _CommentRating;
+		
+		public SP_PELICULA_INICIOResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IdComments", DbType="BigInt NOT NULL")]
+		public long IdComments
+		{
+			get
+			{
+				return this._IdComments;
+			}
+			set
+			{
+				if ((this._IdComments != value))
+				{
+					this._IdComments = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nickname", DbType="NVarChar(30) NOT NULL", CanBeNull=false)]
+		public string Nickname
+		{
+			get
+			{
+				return this._Nickname;
+			}
+			set
+			{
+				if ((this._Nickname != value))
+				{
+					this._Nickname = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FkIdMovie", DbType="BigInt NOT NULL")]
+		public long FkIdMovie
+		{
+			get
+			{
+				return this._FkIdMovie;
+			}
+			set
+			{
+				if ((this._FkIdMovie != value))
+				{
+					this._FkIdMovie = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InsertDate", DbType="DateTime NOT NULL")]
+		public System.DateTime InsertDate
+		{
+			get
+			{
+				return this._InsertDate;
+			}
+			set
+			{
+				if ((this._InsertDate != value))
+				{
+					this._InsertDate = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Comment", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
+		public string Comment
+		{
+			get
+			{
+				return this._Comment;
+			}
+			set
+			{
+				if ((this._Comment != value))
+				{
+					this._Comment = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Deleted", DbType="TinyInt NOT NULL")]
+		public byte Deleted
+		{
+			get
+			{
+				return this._Deleted;
+			}
+			set
+			{
+				if ((this._Deleted != value))
+				{
+					this._Deleted = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CommentRating", DbType="Decimal(3,2)")]
+		public System.Nullable<decimal> CommentRating
+		{
+			get
+			{
+				return this._CommentRating;
+			}
+			set
+			{
+				if ((this._CommentRating != value))
+				{
+					this._CommentRating = value;
 				}
 			}
 		}
