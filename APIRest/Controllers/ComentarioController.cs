@@ -20,7 +20,7 @@ namespace APIRest.Controllers
             return new LogComentario().Borrar(req);
         }
 
-        [HttpGet]
+        [HttpPost]
         [Route("api/comentario/mostrar")]
         public ResMostrarComentarios Mostrar(ReqMostrarComentarios req)
         {

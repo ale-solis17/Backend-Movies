@@ -29,6 +29,8 @@ namespace Movies.Logica
                     {
                         res.Generos.Add(this.FactoriaGeneros(unGenero));
                     }
+
+                    res.respuesta = true;
                 }
                 catch (Exception e)
                 {
@@ -53,6 +55,76 @@ namespace Movies.Logica
                 NombreGenero = unGenero.Name
             };
             return genero;
+        }
+
+        public ResFiltrarGenero Filtrar(ReqFiltrarGenero req)
+        {
+            ResFiltrarGenero res = new ResFiltrarGenero()
+            {
+                Peliculas = new List<Peliculas>(),
+                errores = new List<string>(),
+            };
+
+            if (req != null)
+            {
+                try
+                {
+                    if (req.Generos.IdGenero != 0)
+                    {
+                        ConexionDataContext conexion = new ConexionDataContext();
+                        List<SP_FILTRAR_GENEROResult> listaPel = new List<SP_FILTRAR_GENEROResult>();
+                        listaPel = conexion.SP_FILTRAR_GENERO(req.Generos.IdGenero).ToList();
+
+                        foreach (SP_FILTRAR_GENEROResult result in listaPel)
+                        {
+                            res.Peliculas.Add(this.FactoriaPeliculaGen(result));
+                        }
+
+                        if (res.Peliculas.Count == 0)
+                        {
+                            res.respuesta = false;
+                            res.errores.Add("No hay peliculas con este genero");
+                        }
+                        else
+                        {
+                            res.respuesta = true;
+                        }
+                    }
+                    else
+                    {
+                        res.respuesta = false;
+                        res.errores.Add("No hay genero");
+                    }
+                }
+                catch (Exception e)
+                {
+                    res.respuesta = false;
+                    res.errores.Add("Error:" + e.Message);
+                }
+            }
+            else
+            {
+                res.respuesta = false;
+                res.errores.Add("No hay req");
+            }
+
+            return res;
+        }
+
+        private Peliculas FactoriaPeliculaGen(SP_FILTRAR_GENEROResult unaPel)
+        {
+            Peliculas pelicula = new Peliculas()
+            {
+                id = unaPel.IdMovie,
+                name = unaPel.Name,
+                rating = unaPel.Rating,
+                director = unaPel.Director,
+                creacion = unaPel.CreatedAt,
+                synopsis = unaPel.Synopsis,
+                generos = unaPel.MovieTypes,
+                URL = unaPel.URL
+            };
+            return pelicula;
         }
     }
 }

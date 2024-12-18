@@ -20,7 +20,7 @@ namespace APIRest.Controllers
             return new LogPeliculas().Mostrar(req);
         }
 
-        [HttpGet]
+        [HttpPost]
         [Route("api/peliculas/especifica")]
         public ResPeliculaEsp Especifica(ReqPeliculaEsp req)
         {

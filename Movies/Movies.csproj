@@ -61,6 +61,7 @@
     <Compile Include="Entidades\Request\ReqCrearComentario.cs" />
     <Compile Include="Entidades\Request\ReqCrearPelicula.cs" />
     <Compile Include="Entidades\Request\ReqCrearUsuario.cs" />
+    <Compile Include="Entidades\Request\ReqFiltrarGenero.cs" />
     <Compile Include="Entidades\Request\ReqGeneros.cs" />
     <Compile Include="Entidades\Request\ReqLogin.cs" />
     <Compile Include="Entidades\Request\ReqMostrarComentarios.cs" />
@@ -74,6 +75,7 @@
     <Compile Include="Entidades\Response\ResCrearComentario.cs" />
     <Compile Include="Entidades\Response\ResCrearPelicula.cs" />
     <Compile Include="Entidades\Response\ResCrearUsuario.cs" />
+    <Compile Include="Entidades\Response\ResFiltrarGenero.cs" />
     <Compile Include="Entidades\Response\ResGeneros.cs" />
     <Compile Include="Entidades\Response\ResLogin.cs" />
     <Compile Include="Entidades\Response\ResMostrarComentarios.cs" />

@@ -194,6 +194,13 @@ namespace Movies.AccesoDatos
 			uRL = ((string)(result.GetParameterValue(7)));
 			return ((ISingleResult<SP_PELICULA_INICIOResult>)(result.ReturnValue));
 		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="Movies_DB.SP_FILTRAR_GENERO")]
+		public ISingleResult<SP_FILTRAR_GENEROResult> SP_FILTRAR_GENERO([global::System.Data.Linq.Mapping.ParameterAttribute(Name="IDGENERO", DbType="BigInt")] System.Nullable<long> iDGENERO)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), iDGENERO);
+			return ((ISingleResult<SP_FILTRAR_GENEROResult>)(result.ReturnValue));
+		}
 	}
 	
 	public partial class SP_GENEROSResult
@@ -673,6 +680,176 @@ namespace Movies.AccesoDatos
 				if ((this._CommentRating != value))
 				{
 					this._CommentRating = value;
+				}
+			}
+		}
+	}
+	
+	public partial class SP_FILTRAR_GENEROResult
+	{
+		
+		private long _IdMovie;
+		
+		private string _Name;
+		
+		private System.Nullable<decimal> _Rating;
+		
+		private string _Director;
+		
+		private int _MovieTime;
+		
+		private System.DateTime _CreatedAt;
+		
+		private string _Synopsis;
+		
+		private string _MovieTypes;
+		
+		private string _URL;
+		
+		public SP_FILTRAR_GENEROResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IdMovie", DbType="BigInt NOT NULL")]
+		public long IdMovie
+		{
+			get
+			{
+				return this._IdMovie;
+			}
+			set
+			{
+				if ((this._IdMovie != value))
+				{
+					this._IdMovie = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string Name
+		{
+			get
+			{
+				return this._Name;
+			}
+			set
+			{
+				if ((this._Name != value))
+				{
+					this._Name = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Rating", DbType="Decimal(38,6)")]
+		public decimal Rating
+		{
+			get
+			{
+				return (decimal)this._Rating;
+			}
+			set
+			{
+				if ((this._Rating != value))
+				{
+					this._Rating = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Director", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string Director
+		{
+			get
+			{
+				return this._Director;
+			}
+			set
+			{
+				if ((this._Director != value))
+				{
+					this._Director = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MovieTime", DbType="Int NOT NULL")]
+		public int MovieTime
+		{
+			get
+			{
+				return this._MovieTime;
+			}
+			set
+			{
+				if ((this._MovieTime != value))
+				{
+					this._MovieTime = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreatedAt", DbType="Date NOT NULL")]
+		public System.DateTime CreatedAt
+		{
+			get
+			{
+				return this._CreatedAt;
+			}
+			set
+			{
+				if ((this._CreatedAt != value))
+				{
+					this._CreatedAt = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Synopsis", DbType="NVarChar(MAX)")]
+		public string Synopsis
+		{
+			get
+			{
+				return this._Synopsis;
+			}
+			set
+			{
+				if ((this._Synopsis != value))
+				{
+					this._Synopsis = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MovieTypes", DbType="NVarChar(4000)")]
+		public string MovieTypes
+		{
+			get
+			{
+				return this._MovieTypes;
+			}
+			set
+			{
+				if ((this._MovieTypes != value))
+				{
+					this._MovieTypes = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_URL", DbType="NVarChar(255)")]
+		public string URL
+		{
+			get
+			{
+				return this._URL;
+			}
+			set
+			{
+				if ((this._URL != value))
+				{
+					this._URL = value;
 				}
 			}
 		}
