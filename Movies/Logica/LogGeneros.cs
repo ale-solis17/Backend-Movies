@@ -61,7 +61,7 @@ namespace Movies.Logica
             {
                 try
                 {
-                    if (req.Generos.IdGenero != 0)
+                    if (req.Generos != null)
                     {
                         ConexionDataContext conexion = new ConexionDataContext();
                         List<SP_FILTRAR_GENEROResult> listaPel = new List<SP_FILTRAR_GENEROResult>();
@@ -81,11 +81,6 @@ namespace Movies.Logica
                         {
                             res.respuesta = true;
                         }
-                    }
-                    else
-                    {
-                        res.respuesta = false;
-                        res.errores.Add("No hay genero");
                     }
                 }
                 catch (Exception e)

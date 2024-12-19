@@ -743,11 +743,11 @@ namespace Movies.AccesoDatos
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Rating", DbType="Decimal(38,6)")]
-		public decimal Rating
+		public System.Nullable<decimal> Rating
 		{
 			get
 			{
-				return (decimal)this._Rating;
+				return this._Rating;
 			}
 			set
 			{

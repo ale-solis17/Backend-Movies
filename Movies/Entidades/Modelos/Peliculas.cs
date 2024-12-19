@@ -4,7 +4,7 @@
     {
         public long id { get; set; }
         public string name { get; set; }
-        public decimal rating { get; set; }
+        public decimal? rating { get; set; }
         public string director {  get; set; }
         public int duracion { get; set; }
         public System.DateTime creacion { get; set; }
