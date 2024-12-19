@@ -8,12 +8,12 @@ namespace APIRest.Controllers
     {
         [HttpGet]
         [Route("api/generos")]
-        public ResGeneros Generos(ReqGeneros req)
+        public ResGeneros Generos()
         {
-            return new LogGeneros().Generos(req);
+            return new LogGeneros().Generos();
         }
 
-        [HttpGet]
+        [HttpPost]
         [Route("api/generos/filtrar")]
         public ResFiltrarGenero Filtrar(ReqFiltrarGenero req)
         {

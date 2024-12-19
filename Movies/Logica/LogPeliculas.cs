@@ -196,7 +196,7 @@ namespace Movies.Logica
             return res;
         }
 
-        public ResPeliculaInicio PeliculaInicio(ReqPeliculaInicio req)
+        public ResPeliculaInicio PeliculaInicio()
         {
             ResPeliculaInicio res = new ResPeliculaInicio()
             {
@@ -216,8 +216,6 @@ namespace Movies.Logica
                Comentario = new List<Comentario>()
             };
 
-            if (req != null)
-            {
                 try
                 {
                     long? idReturn = 0;
@@ -260,12 +258,6 @@ namespace Movies.Logica
                     res.respuesta = false;
                     res.errores.Add(e.Message);
                 }
-            }
-            else
-            {
-                res.respuesta = false;
-                res.errores.Add("Falta el Request");
-            }
 
             return res;
         }

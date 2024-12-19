@@ -9,7 +9,7 @@ namespace Movies.Logica
 {
     public class LogGeneros
     {
-        public ResGeneros Generos(ReqGeneros req)
+        public ResGeneros Generos()
         {
             ResGeneros res = new ResGeneros
             {
@@ -17,8 +17,6 @@ namespace Movies.Logica
                 Generos = new List<Generos>()
             };
 
-            if (req != null)
-            {
                 try
                 {
                     ConexionDataContext conexion = new ConexionDataContext();
@@ -37,12 +35,6 @@ namespace Movies.Logica
                     res.respuesta = false;
                     res.errores.Add(e.Message);
                 }
-            }
-            else
-            {
-                res.respuesta = false;
-                res.errores.Add("No hay req");
-            }
 
             return res;
         }
